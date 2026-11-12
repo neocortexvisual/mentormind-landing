@@ -61,6 +61,8 @@ O inventário técnico de pastas, arquivos, elementos e linhas atuais está em `
 - O padding interno do painel e o recuo da frase agora usam o mesmo valor responsivo (`--panel-inset`), de 16 px no celular e cerca de 50 px em 1440 px. Verificado em 360 px e 1440 px: a frase segue em três linhas, sem tocar nas imagens ou criar rolagem lateral.
 - As três formas internas exibem a imagem original branca `section-03-card.png`. Cada aba mostra “DESENVOLVIMENTO DE NEGÓCIOS” em Courier New verde claro `#e3ee88`, sem sombra. No celular, as formas ficam empilhadas.
 - Conferido no Chromium em 360 px e 1440 px: as três imagens carregam e permanecem dentro do painel azul, sem rolagem lateral.
+- Na branch `reestruturacao`, a Seção 03 anterior foi substituída por uma experiência em largura e altura total. Uma timeline GSAP/ScrollTrigger fixa a cena e vincula a abertura, três artigos e as camadas verde/roxo, roxo/laranja e azul à posição do scroll. Os trechos de leitura e transição estão concentrados em `TIMING` dentro de `HowItWorks.astro`; a coluna numérica e o alcance do laranja são controlados por CSS local. Em movimento reduzido, a seção mostra os três artigos em fluxo normal sem pin. A frase de abertura e o asset branco `section-03-card.png` foram preservados. `package.json` e `package-lock.json` receberam GSAP 3.15.1. A página `index.astro` continua apenas compondo as seções.
+- Conferido no Chromium em 1440 × 900, 360 × 900 e 360 × 640 px: as etapas e os fundos avançam e retrocedem com o scroll, o laranja ocupa uma área ampla à direita e embaixo, o azul preenche o final e não há rolagem lateral. Redimensionar durante a etapa laranja mantém a etapa visível e recalcula a largura. Com movimento reduzido, não há pin e os três artigos seguem em fluxo normal.
 
 ## Seção 04
 
@@ -79,6 +81,8 @@ O inventário técnico de pastas, arquivos, elementos e linhas atuais está em `
 - A palavra “humano” passou do verde para o laranja `#cb5230`, amostrado do tênis da imagem 8. O ponto final e o restante do título continuam pretos. Conferido no Chromium em 360 px e 1440 px, sem rolagem lateral.
 - O fundo da Seção 04 voltou ao preto sólido `#000`. Título, textos inferiores e chamada ficaram brancos; somente “humano” mantém o laranja `#cb5230`. A imagem do monitor e o layout foram preservados.
 - Conferido no Chromium em 360 px e 1440 px: fundo preto, textos brancos, “humano” laranja, monitor carregado e nenhuma rolagem lateral.
+- Na branch `reestruturacao`, a Seção 04 foi reorganizada conforme a nova referência: rótulo “QUEM ENSINA IMPORTA”, título em três linhas, descrição, frase em negrito e chamada do blog na coluna esquerda; monitor ampliado à direita. O ponto final de “humano.” acompanha o laranja. No celular, a mesma estrutura empilha o monitor após o texto. Conferido no Chromium em 360 px e 1440 px: imagem carregada, texto legível e ausência de rolagem lateral.
+- A Seção 04 ganhou uma pausa curta ao chegar ao topo: ScrollTrigger fixa a seção por 45% de uma tela no desktop e 20% no celular, com ajuste em `HOLD_SCREENS`. A fixação não é aplicada em movimento reduzido. Conferido no Chromium em 360 px e 1440 px: entrada, permanência, saída e retorno funcionam sem prender a rolagem ou criar rolagem lateral; a Seção 05 permanece acessível.
 
 ## Seção 05
 

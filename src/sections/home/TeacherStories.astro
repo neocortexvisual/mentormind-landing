@@ -3,7 +3,6 @@
   <div class="section-05__intro">
     <p class="section-05__eyebrow">Sua aula, suas escolhas</p>
     <h2 id="section-05-title">A aula ganha forma com você.</h2>
-    <p class="section-05__description">Revise, adapte e acrescente suas ideias. O plano acompanha o seu jeito de ensinar.</p>
   </div>
   <!-- layout demonstrativo -->
   <div class="section-05__demo">
@@ -27,6 +26,7 @@
       </div>
     </div>
   </div>
+  <p class="section-05__description">Revise, adapte e acrescente suas ideias. O plano acompanha o seu jeito de ensinar.</p>
   <p class="section-05__callout">Criar meu plano</p>
 </section>
 
@@ -35,7 +35,7 @@
     box-sizing: border-box;
     min-height: 100vh;
     min-height: 100svh;
-    padding: clamp(28px, 3vw, 48px) 24px 64px;
+    padding: clamp(28px, 3vw, 48px) clamp(16px, 2vw, 24px) 64px;
     background: #fff;
     text-align: center;
   }
@@ -69,7 +69,7 @@
 
   .section-05__description {
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 28px auto 0;
     color: #3c3c3c;
     font-family: Arial, Helvetica, sans-serif;
     font-size: clamp(17px, 1.65vw, 24px);
@@ -82,9 +82,9 @@
     box-sizing: border-box;
     display: grid;
     grid-template-rows: 48px minmax(0, 1fr);
-    width: min(100%, 820px);
-    aspect-ratio: 1.55;
-    margin: clamp(64px, 8vw, 110px) auto 0;
+    width: min(100%, 1160px);
+    aspect-ratio: 1.85;
+    margin: clamp(24px, 2.4vw, 42px) auto 0;
     padding: 4px;
     border-radius: 11px;
     background: linear-gradient(135deg, #a55bb2, #bdb9a0 65%, #e3ee88);
@@ -218,6 +218,7 @@
   @media (max-width: 520px) {
     .section-05__demo {
       grid-template-rows: 36px minmax(0, 1fr);
+      aspect-ratio: 1.25;
     }
 
     .section-05__demo-screen {

@@ -1,101 +1,458 @@
-<!-- Seção 03: área branca reservada para o próximo conteúdo. -->
-<section id="secao-03" class="section-03" aria-label="Seção 03">
-  <div class="section-03__panel">
-    <p class="section-03__intro">Da sua primeira ideia ao plano de aula, com espaço para ensinar do seu jeito.</p>
-    <div class="section-03__card"><img src="/section-03-card.png" alt="" width="390" height="561" /><span>Desenvolvimento de negócios</span></div>
-    <div class="section-03__card" aria-hidden="true"><img src="/section-03-card.png" alt="" width="390" height="561" /><span>Desenvolvimento de negócios</span></div>
-    <div class="section-03__card" aria-hidden="true"><img src="/section-03-card.png" alt="" width="390" height="561" /><span>Desenvolvimento de negócios</span></div>
+<!-- Seção 03: a rolagem controla as cores e a leitura de três etapas. -->
+<section id="secao-03" class="section-03" aria-labelledby="section-03-title">
+  <div class="section-03__scene">
+    <!-- Cada degradê é uma camada independente; nenhuma imagem compõe o fundo. -->
+    <div class="section-03__background" aria-hidden="true">
+      <div class="section-03__color section-03__color--green"></div>
+      <div class="section-03__color section-03__color--orange"></div>
+      <div class="section-03__color section-03__color--blue"></div>
+    </div>
+
+    <header class="section-03__opening">
+      <p class="section-03__eyebrow">DO COMEÇO AO PLANO</p>
+      <h2 id="section-03-title">Da sua primeira ideia ao plano de aula, com espaço para ensinar <em>do seu jeito.</em></h2>
+    </header>
+
+    <div class="section-03__journey">
+      <!-- A coluna numérica é visual; a ordem das etapas está nos artigos abaixo. -->
+      <ol class="section-03__numbers" aria-hidden="true">
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+      </ol>
+
+      <div class="section-03__stages">
+        <article class="section-03__stage">
+          <div class="section-03__copy">
+            <p class="section-03__step">01 / SUA IDEIA</p>
+            <h3>Comece pela ideia.</h3>
+            <p>Escolha o tema da aula e registre o que você quer explorar com a turma.</p>
+          </div>
+          <div class="section-03__card" aria-hidden="true">
+            <img src="/section-03-card.png" alt="" width="390" height="561" />
+            <span>SUA IDEIA</span>
+            <div class="section-03__card-lines"><i></i><i></i><i></i></div>
+          </div>
+        </article>
+
+        <article class="section-03__stage">
+          <div class="section-03__copy">
+            <p class="section-03__step">02 / SUA TURMA</p>
+            <h3>Adapte ao seu contexto.</h3>
+            <p>Ajuste o tempo, os recursos disponíveis e o ritmo da turma.</p>
+          </div>
+          <div class="section-03__card" aria-hidden="true">
+            <img src="/section-03-card.png" alt="" width="390" height="561" />
+            <span>SUA TURMA</span>
+            <div class="section-03__card-lines"><i></i><i></i><i></i></div>
+          </div>
+        </article>
+
+        <article class="section-03__stage">
+          <div class="section-03__copy">
+            <p class="section-03__step">03 / SEU PLANO</p>
+            <h3>Dê forma ao plano.</h3>
+            <p>Revise, acrescente e leve para a sala uma aula com o seu jeito de ensinar.</p>
+          </div>
+          <div class="section-03__card" aria-hidden="true">
+            <img src="/section-03-card.png" alt="" width="390" height="561" />
+            <span>SEU PLANO</span>
+            <div class="section-03__card-lines"><i></i><i></i><i></i></div>
+          </div>
+        </article>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
   .section-03 {
-    display: grid;
-    place-items: center;
-    box-sizing: border-box;
-    padding: 16px;
-    min-height: 100vh;
-    min-height: 100svh;
-    background: #fff;
+    /* tokens.css está vazio; estes valores reutilizam as cores já presentes no site. */
+    --section-03-green: #e3ee88;
+    --section-03-purple: #6913bf;
+    --section-03-orange: #cb5230;
+    --section-03-blue: #1267ff;
+    --section-03-number-center: 50%;
+    color: #fff;
+    background: var(--section-03-purple);
   }
 
-  .section-03__panel {
-    --panel-inset: clamp(16px, 3.5vw, 64px);
-
+  .section-03__scene {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    place-items: center;
-    gap: clamp(4px, 2vw, 24px);
+    isolation: isolate;
     box-sizing: border-box;
-    padding: var(--panel-inset);
-    width: min(82vw, 1550px, 185svh);
-    aspect-ratio: 1.95;
-    border-radius: 18px;
-    background: radial-gradient(ellipse at center, #1267ff 0%, #075cf6 68%, #0053ee 100%);
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: clamp(32px, 6vw, 96px);
+    overflow: hidden;
+    background: linear-gradient(160deg, var(--section-03-green), var(--section-03-purple) 32%, #f47c35 64%, var(--section-03-blue));
+  }
+
+  .section-03__background,
+  .section-03__color {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .section-03__background {
+    z-index: -1;
+  }
+
+  .section-03__color {
+    opacity: 0;
+    will-change: opacity;
+  }
+
+  .section-03__color--green {
+    background: radial-gradient(ellipse 78% 110% at 12% 6%, #f0ffab 0%, var(--section-03-green) 22%, #b65fe6 62%, transparent 100%),
+      linear-gradient(115deg, #c3f582 0%, #8036d3 64%, var(--section-03-purple) 100%);
+  }
+
+  .section-03__color--orange {
+    /* A mancha quente cobre cerca de metade da tela no auge da sequência. */
+    background: radial-gradient(ellipse 83% 100% at 100% 100%, #ffb65c 0%, #f37b34 38%, var(--section-03-orange) 60%, transparent 78%),
+      linear-gradient(105deg, var(--section-03-purple) 0%, #7717c8 45%, #e36b35 100%);
+  }
+
+  .section-03__color--blue {
+    background: radial-gradient(ellipse at 55% 35%, #3487ff 0%, var(--section-03-blue) 61%, #0053ee 100%);
+  }
+
+  .section-03__opening,
+  .section-03__journey {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-03__opening {
+    max-width: 1160px;
+    margin: 0 auto clamp(72px, 10vw, 160px);
+    text-align: center;
+  }
+
+  .section-03__eyebrow,
+  .section-03__step,
+  .section-03__card span {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .section-03__eyebrow {
+    margin: 0 0 26px;
+    font-size: clamp(13px, 1.4vw, 19px);
+  }
+
+  .section-03__opening h2 {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(48px, 6vw, 96px);
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .section-03__opening em {
+    color: var(--section-03-green);
+    font-style: normal;
+  }
+
+  .section-03__numbers {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .section-03__stages {
+    display: grid;
+    gap: clamp(64px, 10vw, 160px);
+  }
+
+  .section-03__stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(150px, 34%);
+    align-items: center;
+    gap: clamp(20px, 5vw, 72px);
+    min-height: 70svh;
+    border-top: 1px solid rgb(255 255 255 / 35%);
+  }
+
+  .section-03__copy h3 {
+    max-width: 760px;
+    margin: 0 0 24px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(42px, 5.6vw, 88px);
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  .section-03__copy > p:last-child {
+    max-width: 580px;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(18px, 1.7vw, 24px);
+    line-height: 1.45;
+  }
+
+  .section-03__step {
+    margin: 0 0 24px;
+    font-size: clamp(13px, 1.2vw, 17px);
   }
 
   .section-03__card {
     position: relative;
-    width: min(82%, 390px);
+    justify-self: center;
+    width: min(100%, 290px);
     aspect-ratio: 390 / 561;
-    transform: translateY(65px);
+    filter: drop-shadow(0 24px 42px rgb(30 7 91 / 20%));
   }
 
   .section-03__card img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 100%;
+  }
+
+  .section-03__card span,
+  .section-03__card-lines {
+    position: absolute;
+    left: 7%;
+    right: 7%;
   }
 
   .section-03__card span {
-    position: absolute;
-    top: 2.5%;
-    left: 7%;
-    color: #e3ee88;
-    font-family: "Courier New", Courier, monospace;
-    font-size: clamp(10px, 0.8vw, 12px);
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    line-height: 1.2;
-    text-transform: uppercase;
-    white-space: nowrap;
+    top: 2.7%;
+    color: var(--section-03-purple);
+    font-size: clamp(10px, 1vw, 13px);
   }
 
-  .section-03__intro {
+  .section-03__card-lines {
+    top: 23%;
+    display: grid;
+    gap: 12px;
+  }
+
+  .section-03__card-lines i {
+    display: block;
+    height: 8px;
+    border-radius: 8px;
+    background: #e7dbf4;
+  }
+
+  .section-03__card-lines i:nth-child(2) {
+    width: 72%;
+  }
+
+  .section-03__card-lines i:nth-child(3) {
+    width: 88%;
+  }
+
+  /* A cena fixada só existe quando o script ativa o modo com movimento. */
+  .section-03[data-enhanced] .section-03__scene {
+    height: 100vh;
+    height: 100svh;
+    min-height: 0;
+    padding: 0;
+    background: var(--section-03-purple);
+  }
+
+  .section-03[data-enhanced] .section-03__opening {
     position: absolute;
-    top: var(--panel-inset);
-    left: var(--panel-inset);
-    max-width: min(75%, 330px);
+    inset: 0;
+    display: grid;
+    align-content: center;
+    max-width: none;
     margin: 0;
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(17px, 1.8vw, 23px);
-    font-weight: 400;
-    line-height: 1.5;
+    padding: clamp(24px, 7vw, 120px);
   }
 
-  @media (max-width: 600px) {
-    .section-03__panel {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 20px;
-      aspect-ratio: auto;
-      padding: 20px 16px 32px;
+  .section-03[data-enhanced] .section-03__journey {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .section-03[data-enhanced] .section-03__numbers {
+    position: absolute;
+    top: var(--section-03-number-center);
+    left: clamp(24px, 7vw, 120px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(12px, 2.4vh, 26px);
+    transform: translateY(-50%);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(48px, 6.6vw, 104px);
+    font-weight: 700;
+    line-height: 0.9;
+  }
+
+  .section-03[data-enhanced] .section-03__stages {
+    position: absolute;
+    top: 50%;
+    right: clamp(24px, 7vw, 120px);
+    width: min(70%, 1040px);
+    height: min(78svh, 700px);
+    display: block;
+    transform: translateY(-50%);
+  }
+
+  .section-03[data-enhanced] .section-03__stage {
+    position: absolute;
+    inset: 0;
+    min-height: 0;
+    border: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .section-03[data-enhanced] .section-03__color {
+    will-change: opacity;
+  }
+
+  @media (max-width: 700px) {
+    .section-03__scene {
+      padding: 28px 20px 72px;
     }
 
-    .section-03__intro {
-      position: static;
-      max-width: 100%;
-      font-size: 17px;
+    .section-03__opening {
+      margin-bottom: 64px;
+    }
+
+    .section-03__opening h2 {
+      font-size: clamp(39px, 10vw, 60px);
+    }
+
+    .section-03__stage {
+      grid-template-columns: minmax(0, 1fr);
+      min-height: 0;
+      padding-top: 44px;
     }
 
     .section-03__card {
-      width: min(100%, 230px);
-      transform: none;
+      width: min(64%, 230px);
     }
 
-    .section-03__card span {
-      font-size: 10px;
+    .section-03[data-enhanced] .section-03__opening {
+      padding: 28px;
+    }
+
+    .section-03[data-enhanced] .section-03__numbers {
+      left: 18px;
+      gap: 16px;
+      font-size: clamp(32px, 10vw, 52px);
+    }
+
+    .section-03[data-enhanced] .section-03__stages {
+      right: 18px;
+      width: calc(100% - 92px);
+      height: min(76svh, 640px);
+    }
+
+    .section-03[data-enhanced] .section-03__stage {
+      grid-template-columns: minmax(0, 1fr);
+      align-content: center;
+      justify-items: start;
+      gap: 20px;
+      padding: 0;
+    }
+
+    .section-03[data-enhanced] .section-03__copy h3 {
+      margin-bottom: 12px;
+      font-size: clamp(32px, 8.4vw, 52px);
+    }
+
+    .section-03[data-enhanced] .section-03__copy > p:last-child {
+      font-size: clamp(16px, 4.4vw, 19px);
+    }
+
+    .section-03[data-enhanced] .section-03__step {
+      margin-bottom: 14px;
+      font-size: 12px;
+    }
+
+    .section-03[data-enhanced] .section-03__card {
+      width: min(50%, 165px);
     }
   }
 </style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const section = document.querySelector('.section-03');
+  if (section) {
+    const scene = section.querySelector('.section-03__scene');
+    const green = section.querySelector('.section-03__color--green');
+    const orange = section.querySelector('.section-03__color--orange');
+    const blue = section.querySelector('.section-03__color--blue');
+    const opening = section.querySelector('.section-03__opening');
+    const journey = section.querySelector('.section-03__journey');
+    const stages = Array.from(section.querySelectorAll('.section-03__stage'));
+    const numbers = Array.from(section.querySelectorAll('.section-03__numbers li'));
+
+    // Ritmo: os valores são unidades relativas da timeline; scrollScreens define o percurso total.
+    const TIMING = { read: 1.25, transition: 0.9, scrollScreens: 6.4 };
+    const media = gsap.matchMedia();
+
+    media.add('(prefers-reduced-motion: no-preference)', () => {
+      section.dataset.enhanced = 'true';
+      gsap.set(green, { opacity: 1 });
+      gsap.set([orange, blue], { opacity: 0 });
+      gsap.set(stages, { autoAlpha: 0, yPercent: 0 });
+      gsap.set(numbers, { opacity: 0.38, scale: 1, transformOrigin: 'left center' });
+      gsap.set(numbers[0], { opacity: 1, scale: 1.15 });
+
+      const timeline = gsap.timeline({
+        defaults: { ease: 'none' },
+        scrollTrigger: {
+          trigger: section,
+          pin: scene,
+          start: 'top top',
+          end: () => `+=${Math.round(window.innerHeight * TIMING.scrollScreens)}`,
+          scrub: true,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+        },
+      });
+
+      // Uma tween sem alvo visual reserva distância de scroll para leitura.
+      const hold = () => timeline.to({ elapsed: 0 }, { elapsed: 1, duration: TIMING.read });
+      hold();
+
+      // O verde desaparece cedo; o roxo sustenta a primeira etapa.
+      timeline.to(green, { opacity: 0, duration: TIMING.transition });
+      timeline.to(opening, { autoAlpha: 0, yPercent: -8, duration: TIMING.transition }, '<');
+      timeline.to(journey, { autoAlpha: 1, duration: TIMING.transition }, '<');
+      timeline.to(stages[0], { autoAlpha: 1, yPercent: 0, duration: TIMING.transition }, '<');
+      hold();
+
+      // O laranja cresce da direita e de baixo enquanto a segunda etapa entra.
+      timeline.to(orange, { opacity: 1, duration: TIMING.transition });
+      timeline.to(stages[0], { autoAlpha: 0, yPercent: -8, duration: TIMING.transition * 0.45 }, '<');
+      timeline.fromTo(stages[1], { yPercent: 8 }, { autoAlpha: 1, yPercent: 0, duration: TIMING.transition * 0.55 }, '>');
+      timeline.to(numbers[0], { opacity: 0.38, scale: 1, duration: TIMING.transition }, '<');
+      timeline.to(numbers[1], { opacity: 1, scale: 1.15, duration: TIMING.transition }, '<');
+      hold();
+
+      // O azul substitui o roxo; o laranja recua completamente.
+      timeline.to(blue, { opacity: 1, duration: TIMING.transition });
+      timeline.to(orange, { opacity: 0, duration: TIMING.transition }, '<');
+      timeline.to(stages[1], { autoAlpha: 0, yPercent: -8, duration: TIMING.transition * 0.45 }, '<');
+      timeline.fromTo(stages[2], { yPercent: 8 }, { autoAlpha: 1, yPercent: 0, duration: TIMING.transition * 0.55 }, '>');
+      timeline.to(numbers[1], { opacity: 0.38, scale: 1, duration: TIMING.transition }, '<');
+      timeline.to(numbers[2], { opacity: 1, scale: 1.15, duration: TIMING.transition }, '<');
+      hold();
+
+      // O contexto de matchMedia desfaz o pin e as tweens se a preferência de movimento mudar.
+      return () => { delete section.dataset.enhanced; };
+    });
+  }
+</script>

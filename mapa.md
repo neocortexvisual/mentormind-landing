@@ -2,7 +2,7 @@
 
 ## Versionamento
 
-O projeto `mentormind-web/` é a raiz do repositório Git conectado a `https://github.com/neocortexvisual/mentormind-landing.git`. O `.gitignore` exclui `node_modules/`, `dist/` e `.astro/`; o código, os assets, as regras e esta documentação são versionados.
+Esta cópia `mentormind-web-dev/` usa a branch `reestruturacao` do repositório `https://github.com/neocortexvisual/mentormind-landing.git`. A pasta `mentormind-web/` permanece na branch `main` como referência e não é alterada por esta implementação. O `.gitignore` exclui `node_modules/`, `dist/` e `.astro/`; o código, os assets, as regras e esta documentação são versionados.
 
 Estado documentado em 12/11/2026. Este mapa descreve o que existe no projeto agora; a implementação nos arquivos de código é a fonte de verdade. Os números de linha abaixo são pontos de partida para localizar elementos e devem ser conferidos novamente após cada edição.
 
@@ -14,8 +14,8 @@ Estado documentado em 12/11/2026. Este mapa descreve o que existe no projeto ago
 | --- | --- | --- | --- | --- |
 | 01 | `src/pages/index.astro:21` | `src/sections/home/Hero.astro` | `.hero` | Implementado |
 | 02 | `src/pages/index.astro:22–23` | `src/sections/home/DemoSection.astro` | `#demonstracao.section-02` | Implementado |
-| 03 | `src/pages/index.astro:24–25` | `src/sections/home/HowItWorks.astro` | `#secao-03.section-03` | Painel azul com frase e três formas brancas com rótulos verdes |
-| 04 | `src/pages/index.astro:26–27` | `src/sections/home/EditorPreview.astro` | `#secao-04.section-04` | Manifesto branco e laranja com monitor central sobre preto |
+| 03 | `src/pages/index.astro:24–25` | `src/sections/home/HowItWorks.astro` | `#secao-03.section-03` | Experiência fixada no scroll com três etapas e degradês |
+| 04 | `src/pages/index.astro:26–27` | `src/sections/home/EditorPreview.astro` | `#secao-04.section-04` | Manifesto à esquerda e monitor ampliado à direita sobre preto |
 | 05 | `src/pages/index.astro:28–29` | `src/sections/home/TeacherStories.astro` | `#secao-05.section-05` | Lettering e demonstração com cinco etapas interativas |
 | 06 | `src/pages/index.astro:30–31` | `src/sections/home/Pricing.astro` | `#secao-06.section-06` | Cartão central de depoimento demonstrativo |
 | 07 | `src/pages/index.astro:32–33` | `src/sections/home/Faq.astro` | `#secao-07.section-07` | Área branca vazia |
@@ -38,7 +38,7 @@ mentormind-web/
 │   │   └── cyclist.png                 ← personagem na bicicleta da seção 01
 │   ├── section-02-preview.png          ← imagem 4 usada na seção 02
 │   ├── section-02-coffee.png           ← xícara da seção 02
-│   ├── section-03-card.png             ← imagem original branca repetida três vezes na seção 03
+│   ├── section-03-card.png             ← forma branca reutilizada nos três conteúdos da seção 03
 │   ├── section-04-background.png       ← cópia da imagem 7, atualmente sem uso
 │   ├── section-04-monitor.png          ← imagem 8, pessoa sobre monitor na seção 04
 │   ├── favicon.svg                     ← vazio
@@ -77,7 +77,7 @@ mentormind-web/
 │   ├── config/site.ts                  ← vazio
 │   └── content.config.ts               ← vazio
 ├── astro.config.mjs                    ← configuração padrão do Astro
-├── package.json                        ← scripts e dependência Astro
+├── package.json                        ← scripts e dependências Astro e GSAP
 ├── package-lock.json                   ← versões instaladas
 ├── .nvmrc                              ← Node 22.22.3
 └── .gitignore                           ← ignora node_modules, dist e .astro
@@ -122,30 +122,40 @@ Assets ligados ao Hero: `public/characters/reader.png`, `writer.png` e `cyclist.
 
 Assets: `public/section-02-preview.png` e `public/section-02-coffee.png`. A janela tem raio de **18 px** (`DemoSection.astro:31`) e fica centralizada sobre a divisão das seções por `top: 0`, `left: 50%` e `transform: translate(-50%, -50%)`. A grade fica em duas colunas no desktop e uma coluna até 700 px. O CTA aponta para `#criar-plano`, ainda sem destino implementado.
 
-### Seção 03 — Painel azul (`src/sections/home/HowItWorks.astro`, linhas 1–101)
+### Seção 03 — Jornada controlada pelo scroll (`src/sections/home/HowItWorks.astro`, linhas 1–458)
 
 | Elemento | HTML atual | Estilo atual | Seletor ou texto de busca |
 | --- | --- | --- | --- |
-| Área branca de uma tela | 2–9 | 12–20 | `#secao-03`, `.section-03` |
-| Retângulo azul | 3–8 | 22–36 e 78–84 | `.section-03__panel` |
-| Frase em Arial no canto superior esquerdo | 4 | 65–76 e 86–90 | `.section-03__intro` |
-| Três imagens brancas originais do arquivo 6 | 5–7 | 38–49 e 92–95 | `.section-03__card`, `.section-03__card img` |
-| Rótulo verde claro em Courier New na aba de cada forma | 5–7 | 51–63 e 97–99 | `.section-03__card span` |
+| Área em largura total e cena | 2–66 | 69–100 e 251–261 | `#secao-03`, `.section-03__scene` |
+| Três camadas de degradê | 5–9 | 92–120 | `.section-03__color--green`, `--orange`, `--blue` |
+| Título de abertura | 11–14 | 128–160 | `.section-03__opening` |
+| Coluna numérica | 18–22 | 162–167 e 280–292 | `.section-03__numbers` |
+| Três artigos de conteúdo | 24–64 | 169–249 e 294–312 | `.section-03__stage` |
+| Forma branca original | 31–35, 44–48, 57–61 | 211–249 | `.section-03__card` |
+| Ajustes para celular | — | 317–382 | `@media (max-width: 700px)` |
+| Timeline e ScrollTrigger | — | 384–458 | `TIMING`, `scrollTrigger`, `media.add` |
 
-O painel é feito em CSS, tem proporção `1.95` no desktop, largura responsiva e raio de **18 px** (`HowItWorks.astro:34`), igual ao painel da seção 02. O fundo azul usa o gradiente de `HowItWorks.astro:35`. O recuo interno é controlado por `--panel-inset` (`HowItWorks.astro:23`) e usado tanto no padding do painel quanto na posição da frase. A frase “Da sua primeira ideia ao plano de aula, com espaço para ensinar do seu jeito.” fica no canto superior esquerdo em Arial, com o mesmo tamanho responsivo, peso normal e entrelinha da descrição do Hero. A largura máxima de 330 px faz a frase ocupar três linhas no desktop. O asset original `public/section-03-card.png` é exibido diretamente como imagem branca em cada uma das três formas (`HowItWorks.astro:5–7` e `45–49`). As abas exibem “DESENVOLVIMENTO DE NEGÓCIOS” em Courier New verde claro `#e3ee88`, sem sombra (`HowItWorks.astro:51–63`); só a primeira cópia é lida por tecnologias assistivas, evitando repetição. Até 600 px, as três formas ficam empilhadas para manter o rótulo legível. Não há interação nesta seção.
+A seção agora ocupa toda a largura e pelo menos uma tela. O título preserva a frase “Da sua primeira ideia ao plano de aula, com espaço para ensinar do seu jeito.”; os três artigos apresentam ideia, contexto e plano. O arquivo `public/section-03-card.png` continua como forma decorativa dentro de cada artigo. O fundo é formado por três degradês CSS independentes: verde/roxo, roxo/laranja e azul. Os valores locais em `HowItWorks.astro:70–75` reutilizam as cores já usadas no site; `tokens.css` permanece vazio. A área laranja cresce pela direita e por baixo, ocupa aproximadamente metade da composição e desaparece antes do azul final.
 
-### Seção 04 — Manifesto com monitor (`src/sections/home/EditorPreview.astro`, linhas 1–141)
+O script usa GSAP + ScrollTrigger em uma timeline com pin e scrub, sem loop automático. Para alterar o ritmo, edite `TIMING.read`, `TIMING.transition` e `TIMING.scrollScreens` em `HowItWorks.astro:402`; para mover a coluna numérica, altere `--section-03-number-center` em `HowItWorks.astro:75`; para mudar a proporção da mancha laranja, ajuste o degradê em `HowItWorks.astro:112–116`. As camadas, o título, os números e os artigos têm animações separadas. Com `prefers-reduced-motion: reduce` (ou sem JavaScript), os três artigos aparecem em fluxo normal, sem pin. `package.json` e `package-lock.json` incluem GSAP 3.15.1. O marcador `<!-- Seção 03 -->` permanece em `src/pages/index.astro:24`.
+
+### Seção 04 — Manifesto com monitor (`src/sections/home/EditorPreview.astro`, linhas 1–159)
 
 | Elemento | HTML atual | Estilo atual | Seletor ou texto de busca |
 | --- | --- | --- | --- |
-| Área branca | 2–21 | 24–34 | `#secao-04`, `.section-04` |
-| Título serifado e palavra laranja | 3 | 36–50 | `#section-04-title`, `.section-04__highlight` |
-| Bloco sobre quem ensina | 6–9 | 62–64 e 91–101 | `.section-04__teaching` |
-| Monitor central | 11–13 | 66–85 e 137–139 | `.section-04__figure`, `.section-04__figure img` |
-| Bloco sobre o blog | 15–19 | 87–89 e 97–118 | `.section-04__conversation` |
-| Distribuição responsiva | 5–20 | 52–60 e 120–140 | `.section-04__details` |
+| Área preta de pelo menos uma tela | 2–14 | 17–30 | `#secao-04`, `.section-04` |
+| Coluna de texto à esquerda | 3–9 | 32–37 | `.section-04__copy` |
+| Rótulo “Quem ensina importa” | 4 | 39–47 | `.section-04__eyebrow` |
+| Título serifado e laranja | 5 | 49–60 | `#section-04-title`, `.section-04__highlight` |
+| Descrição e frase em negrito | 6–7 | 62–73 | `.section-04__description`, `.section-04__emphasis` |
+| Chamada sublinhada do blog | 8 | 75–81 | `.section-04__callout` |
+| Monitor ampliado à direita | 11–13 | 83–102 | `.section-04__figure`, `.section-04__figure img` |
+| Empilhamento no celular | — | 104–130 | `@media (max-width: 800px)` |
+| Pausa curta no scroll | — | 133–159 | `HOLD_SCREENS`, `ScrollTrigger.create` |
 
-A Seção 04 começa após a Seção 03 e tem altura mínima de uma viewport. O fundo é preto sólido `#000`, com texto branco `#fff`, sem grade; apenas a palavra ‘humano’ permanece laranja. O título “O futuro da educação continua humano.” usa Georgia, como o título do Hero, com tamanho `clamp(46px, 7.1vw, 120px)` (`EditorPreview.astro:40`); só “humano” usa o laranja `#cb5230`, amostrado do tênis da imagem 8 (`EditorPreview.astro:48–50`). O padding superior é `clamp(32px, 3vw, 56px)` (`EditorPreview.astro:30`). Os textos de apoio usam Arial com tamanho de `16–20 px`, o subtítulo “Valorizamos quem ensina.” usa `28–38 px` e o rótulo “CONTINUE ESSA CONVERSA” usa Courier New de `15–19 px`. O arquivo original 8.png foi copiado sem alteração para `public/section-04-monitor.png` e aparece no centro da grade. A largura visível é enquadrada no próprio componente para compensar as margens transparentes do PNG; `align-items: end` (`EditorPreview.astro:55`) alinha a base do monitor com a base dos blocos de texto no desktop. Até 700 px, os três elementos ficam empilhados. A frase “Confira a matéria completa no blog ↗” é apenas texto sublinhado nesta etapa; não há navegação associada. A cópia `public/section-04-background.png` permanece no projeto, mas não é referenciada pela página. O marcador `<!-- Seção 04 -->` está em `src/pages/index.astro:26`.
+A Seção 04 começa após a Seção 03 e mantém fundo preto sólido `#000`, com texto branco `#fff`, sem grade. A coluna esquerda reúne o novo rótulo “QUEM ENSINA IMPORTA”, o título em três linhas, a descrição, “Valorizamos quem ensina.” e a chamada do blog. O título usa Georgia; “humano.”, inclusive o ponto, usa o laranja `#cb5230` do tênis. Os textos de apoio usam Arial e o rótulo usa Courier New. O monitor original `public/section-04-monitor.png` aparece ampliado à direita e é recortado pela própria seção; a figura enquadra as margens transparentes do PNG. Até 800 px, texto e imagem ficam empilhados na mesma estrutura HTML, sem rolagem lateral. A chamada “Confira a matéria completa no blog ↗” permanece texto visual, sem link nesta etapa. A cópia `public/section-04-background.png` permanece no projeto sem uso. O marcador `<!-- Seção 04 -->` está em `src/pages/index.astro:26`.
+
+Ao chegar ao topo, a Seção 04 fica fixada por uma distância adicional de scroll equivalente a 45% da altura da tela no desktop ou 20% no celular. Ajuste esses valores em `HOLD_SCREENS` (`EditorPreview.astro:142`). O script usa o GSAP/ScrollTrigger já instalado; `refreshPriority: -1` faz a medição ocorrer depois da Seção 03. Com `prefers-reduced-motion: reduce`, não há fixação.
 
 ### Seção 05 — Lettering e demonstração interativa (`src/sections/home/TeacherStories.astro`, linhas 1–329)
 
@@ -199,14 +209,14 @@ Essa separação é uma convenção para futuras edições; não implica criar a
 
 ## Como filtrar, verificar e auditar
 
-Execute os comandos abaixo na raiz `mentormind-web/`. Use `rg -n` para obter o número de linha atual, pois os números deste documento mudam quando o código muda.
+Execute os comandos abaixo na raiz da cópia `mentormind-web-dev/`, branch `reestruturacao`. Use `rg -n` para obter o número de linha atual, pois os números deste documento mudam quando o código muda.
 
 ```bash
 # Localizar as seções e sua ordem na página
 rg -n 'import (Hero|DemoSection|HowItWorks|EditorPreview|TeacherStories|Pricing|Faq)|Seção 0[1234567]|<(Hero|DemoSection|HowItWorks|EditorPreview|TeacherStories|Pricing|Faq) />' src/pages/index.astro src/sections/home
 
 # Localizar exatamente um elemento e todos os seus estilos
-rg -n 'hero__button|section-02__coffee|section-03__panel' src/sections/home
+rg -n 'hero__button|section-02__coffee|section-03__stage|section-03__color' src/sections/home
 
 # Auditar IDs e links internos; todo href="#..." deve ter um id correspondente
 rg -n 'href="#[^"]+"|id="[^"]+"' src
