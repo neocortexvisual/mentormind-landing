@@ -1,0 +1,329 @@
+<!-- Seção 05: lettering de abertura. -->
+<section id="secao-05" class="section-05" aria-labelledby="section-05-title">
+  <div class="section-05__intro">
+    <p class="section-05__eyebrow">Sua aula, suas escolhas</p>
+    <h2 id="section-05-title">A aula ganha forma com você.</h2>
+    <p class="section-05__description">Revise, adapte e acrescente suas ideias. O plano acompanha o seu jeito de ensinar.</p>
+  </div>
+  <!-- layout demonstrativo -->
+  <div class="section-05__demo">
+    <div class="section-05__demo-tabs" role="tablist" aria-label="Etapas do plano de aula">
+      <button id="section-05-tab-objetivo" type="button" role="tab" aria-controls="section-05-demo-panel" aria-selected="false" tabindex="-1"><span aria-hidden="true">✦</span> Objetivo</button>
+      <button id="section-05-tab-tempo" type="button" role="tab" aria-controls="section-05-demo-panel" aria-selected="false" tabindex="-1"><span aria-hidden="true">◷</span> Tempo</button>
+      <button id="section-05-tab-recursos" type="button" role="tab" aria-controls="section-05-demo-panel" aria-selected="false" tabindex="-1"><span aria-hidden="true">▣</span> Recursos</button>
+      <button id="section-05-tab-turma" type="button" role="tab" aria-controls="section-05-demo-panel" aria-selected="false" tabindex="-1"><span aria-hidden="true">♧</span> Turma</button>
+      <button id="section-05-tab-plano" class="section-05__demo-tab--active" type="button" role="tab" aria-controls="section-05-demo-panel" aria-selected="true" tabindex="0"><span aria-hidden="true">✓</span> Plano</button>
+    </div>
+    <div id="section-05-demo-panel" class="section-05__demo-screen" role="tabpanel" aria-labelledby="section-05-tab-plano" aria-live="polite">
+      <span class="section-05__demo-count">05 / 05</span>
+      <strong class="section-05__demo-title">Seu plano de aula</strong>
+      <p class="section-05__demo-copy">Revise os detalhes e adapte o plano ao seu jeito de ensinar.</p>
+    </div>
+    <div class="section-05__demo-footer">
+      <span class="section-05__demo-icon" aria-hidden="true">▣</span>
+      <div>
+        <strong class="section-05__demo-footer-title">Plano pronto para adaptar</strong>
+        <p class="section-05__demo-footer-copy">Organize objetivos, tempo e recursos em uma aula feita para a sua turma.</p>
+      </div>
+    </div>
+  </div>
+  <p class="section-05__callout">Criar meu plano</p>
+</section>
+
+<style>
+  .section-05 {
+    box-sizing: border-box;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: clamp(28px, 3vw, 48px) 24px 64px;
+    background: #fff;
+    text-align: center;
+  }
+
+  .section-05__intro {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-05__eyebrow {
+    margin: 0;
+    color: #6913bf;
+    font-family: "Courier New", Courier, monospace;
+    font-size: clamp(14px, 1.5vw, 21px);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .section-05 h2 {
+    margin: 14px 0 10px;
+    color: #000;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(38px, 5.2vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.045em;
+    line-height: 1.06;
+    text-wrap: balance;
+  }
+
+  .section-05__description {
+    max-width: 1000px;
+    margin: 0 auto;
+    color: #3c3c3c;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(17px, 1.65vw, 24px);
+    line-height: 1.4;
+    text-wrap: balance;
+  }
+
+  .section-05__demo {
+    position: relative;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 48px minmax(0, 1fr);
+    width: min(100%, 820px);
+    aspect-ratio: 1.55;
+    margin: clamp(64px, 8vw, 110px) auto 0;
+    padding: 4px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, #a55bb2, #bdb9a0 65%, #e3ee88);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+  }
+
+  .section-05__demo-tabs {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    margin-inline: -4px;
+    overflow: hidden;
+    border-radius: 7px 7px 0 0;
+    background: #171717;
+  }
+
+  .section-05__demo-tabs > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-width: 0;
+    padding: 0 2px;
+    border: 0;
+    border-right: 1px solid #303030;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: #b8b8b8;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: clamp(8px, 1.1vw, 12px);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .section-05__demo-tabs > button:last-child {
+    border-right: 0;
+  }
+
+  .section-05__demo-tabs .section-05__demo-tab--active {
+    border-bottom-color: #e3ee88;
+    color: #fff;
+  }
+
+  .section-05__demo-tabs > button:focus-visible {
+    outline: 2px solid #e3ee88;
+    outline-offset: -4px;
+  }
+
+  .section-05__demo-screen {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px 20px 32px;
+    padding: clamp(12px, 3vw, 28px);
+    border: 8px solid #272727;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #858585, #a2a2a2);
+    box-shadow: inset 0 0 0 2px #161616;
+    color: #222;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .section-05__demo-count {
+    font-family: "Courier New", Courier, monospace;
+    font-size: clamp(10px, 1vw, 13px);
+    font-weight: 700;
+  }
+
+  .section-05__demo-title {
+    margin-top: 12px;
+    font-size: clamp(16px, 2vw, 28px);
+  }
+
+  .section-05__demo-copy {
+    max-width: 32ch;
+    margin: 8px 0 0;
+    font-size: clamp(11px, 1.2vw, 16px);
+    line-height: 1.4;
+  }
+
+  .section-05__demo-footer {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 72px;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: #1b1b1b;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 25%);
+    color: #fff;
+  }
+
+  .section-05__demo-icon {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    color: #e3ee88;
+  }
+
+  .section-05__demo-footer strong {
+    font-size: clamp(11px, 1.2vw, 15px);
+  }
+
+  .section-05__demo-footer p {
+    margin: 4px 0 0;
+    color: #b8b8b8;
+    font-size: clamp(9px, 1vw, 12px);
+    line-height: 1.3;
+  }
+
+  .section-05__callout {
+    margin: 24px 0 0;
+    color: #6913bf;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(18px, 1.7vw, 24px);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 520px) {
+    .section-05__demo {
+      grid-template-rows: 36px minmax(0, 1fr);
+    }
+
+    .section-05__demo-screen {
+      margin: 8px 8px 16px;
+      padding: 10px;
+      border-width: 5px;
+      border-radius: 8px;
+    }
+
+    .section-05__demo-title {
+      margin-top: 4px;
+    }
+
+    .section-05__demo-copy {
+      display: none;
+    }
+
+    .section-05__demo-footer {
+      right: 8px;
+      bottom: 8px;
+      left: 8px;
+      gap: 8px;
+      min-height: 56px;
+      padding: 8px;
+    }
+
+    .section-05__demo-icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+</style>
+
+<script>
+  const demo = document.querySelector('.section-05__demo');
+
+  if (demo) {
+    const tabs = [...demo.querySelectorAll('[role="tab"]')];
+    const panel = demo.querySelector('[role="tabpanel"]');
+    const count = demo.querySelector('.section-05__demo-count');
+    const title = demo.querySelector('.section-05__demo-title');
+    const copy = demo.querySelector('.section-05__demo-copy');
+    const footerTitle = demo.querySelector('.section-05__demo-footer-title');
+    const footerCopy = demo.querySelector('.section-05__demo-footer-copy');
+    const pages = [
+      {
+        title: 'Objetivo da aula',
+        copy: 'Defina o que a turma vai aprender nesta aula.',
+        footerTitle: 'Comece pelo objetivo',
+        footerCopy: 'Escolha o foco da aula para orientar as próximas decisões.',
+      },
+      {
+        title: 'Tempo disponível',
+        copy: 'Ajuste o plano à duração da aula.',
+        footerTitle: 'Aula no seu tempo',
+        footerCopy: 'Distribua as atividades de acordo com os minutos disponíveis.',
+      },
+      {
+        title: 'Recursos à mão',
+        copy: 'Considere os materiais que você já tem.',
+        footerTitle: 'Use o que você tem',
+        footerCopy: 'O planejamento parte dos recursos reais da sua escola.',
+      },
+      {
+        title: 'Sua turma',
+        copy: 'Pense no contexto e nas necessidades dos estudantes.',
+        footerTitle: 'Feito para sua turma',
+        footerCopy: 'Adapte as propostas ao jeito de aprender dos seus alunos.',
+      },
+      {
+        title: 'Seu plano de aula',
+        copy: 'Revise os detalhes e adapte o plano ao seu jeito de ensinar.',
+        footerTitle: 'Plano pronto para adaptar',
+        footerCopy: 'Organize objetivos, tempo e recursos em uma aula feita para a sua turma.',
+      },
+    ];
+
+    function showPage(index, focus = false) {
+      const page = pages[index];
+      tabs.forEach((tab, tabIndex) => {
+        const active = tabIndex === index;
+        tab.classList.toggle('section-05__demo-tab--active', active);
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+      });
+      panel.setAttribute('aria-labelledby', tabs[index].id);
+      count.textContent = `${String(index + 1).padStart(2, '0')} / 05`;
+      title.textContent = page.title;
+      copy.textContent = page.copy;
+      footerTitle.textContent = page.footerTitle;
+      footerCopy.textContent = page.footerCopy;
+      if (focus) tabs[index].focus();
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => showPage(index));
+      tab.addEventListener('keydown', (event) => {
+        let nextIndex;
+        if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === 'Home') nextIndex = 0;
+        else if (event.key === 'End') nextIndex = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        showPage(nextIndex, true);
+      });
+    });
+  }
+</script>

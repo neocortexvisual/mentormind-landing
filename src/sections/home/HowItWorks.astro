@@ -1,0 +1,101 @@
+<!-- Seção 03: área branca reservada para o próximo conteúdo. -->
+<section id="secao-03" class="section-03" aria-label="Seção 03">
+  <div class="section-03__panel">
+    <p class="section-03__intro">Da sua primeira ideia ao plano de aula, com espaço para ensinar do seu jeito.</p>
+    <div class="section-03__card"><img src="/section-03-card.png" alt="" width="390" height="561" /><span>Desenvolvimento de negócios</span></div>
+    <div class="section-03__card" aria-hidden="true"><img src="/section-03-card.png" alt="" width="390" height="561" /><span>Desenvolvimento de negócios</span></div>
+    <div class="section-03__card" aria-hidden="true"><img src="/section-03-card.png" alt="" width="390" height="561" /><span>Desenvolvimento de negócios</span></div>
+  </div>
+</section>
+
+<style>
+  .section-03 {
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    padding: 16px;
+    min-height: 100vh;
+    min-height: 100svh;
+    background: #fff;
+  }
+
+  .section-03__panel {
+    --panel-inset: clamp(16px, 3.5vw, 64px);
+
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    place-items: center;
+    gap: clamp(4px, 2vw, 24px);
+    box-sizing: border-box;
+    padding: var(--panel-inset);
+    width: min(82vw, 1550px, 185svh);
+    aspect-ratio: 1.95;
+    border-radius: 18px;
+    background: radial-gradient(ellipse at center, #1267ff 0%, #075cf6 68%, #0053ee 100%);
+  }
+
+  .section-03__card {
+    position: relative;
+    width: min(82%, 390px);
+    aspect-ratio: 390 / 561;
+    transform: translateY(65px);
+  }
+
+  .section-03__card img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .section-03__card span {
+    position: absolute;
+    top: 2.5%;
+    left: 7%;
+    color: #e3ee88;
+    font-family: "Courier New", Courier, monospace;
+    font-size: clamp(10px, 0.8vw, 12px);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .section-03__intro {
+    position: absolute;
+    top: var(--panel-inset);
+    left: var(--panel-inset);
+    max-width: min(75%, 330px);
+    margin: 0;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(17px, 1.8vw, 23px);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 600px) {
+    .section-03__panel {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 20px;
+      aspect-ratio: auto;
+      padding: 20px 16px 32px;
+    }
+
+    .section-03__intro {
+      position: static;
+      max-width: 100%;
+      font-size: 17px;
+    }
+
+    .section-03__card {
+      width: min(100%, 230px);
+      transform: none;
+    }
+
+    .section-03__card span {
+      font-size: 10px;
+    }
+  }
+</style>

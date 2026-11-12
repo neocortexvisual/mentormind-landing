@@ -1,0 +1,141 @@
+<!-- Seção 06: comentários de professores. O fundo da seção continua branco. -->
+<section id="secao-06" class="section-06" aria-labelledby="section-06-title">
+  <!-- Cartão central: mantém a composição da referência sem depender de imagem. -->
+  <div class="section-06__card">
+    <!-- Rótulo e aspas identificam a área de comentários. -->
+    <p id="section-06-title" class="section-06__eyebrow">O QUE PROFESSORES DIZEM</p>
+    <span class="section-06__quote-mark" aria-hidden="true">“</span>
+
+    <!-- Texto demonstrativo: substituir por um depoimento autorizado antes da publicação. -->
+    <blockquote class="section-06__quote">
+      Este espaço é para contar como o planejamento de aula se adapta à rotina e às ideias de quem ensina.
+    </blockquote>
+
+    <!-- Identificação demonstrativa: o círculo roxo sólido ocupa o lugar da foto de perfil. -->
+    <div class="section-06__author">
+      <span class="section-06__avatar" aria-hidden="true"></span>
+      <div class="section-06__author-copy">
+        <strong>Depoimento de professora</strong>
+        <span>Espaço para comentário real</span>
+      </div>
+    </div>
+
+    <!-- Pontos visuais da referência; não indicam navegação nesta etapa. -->
+    <div class="section-06__dots" aria-hidden="true">
+      <span></span><span class="section-06__dot--active"></span><span></span>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Seção 06: área branca que centraliza o cartão nos dois eixos. */
+  .section-06 {
+    box-sizing: border-box;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: clamp(24px, 5vw, 64px);
+    display: grid;
+    place-items: center;
+    background: #fff;
+  }
+
+  /* Cartão: largura limitada, bordas arredondadas e separação sutil do branco externo. */
+  .section-06__card {
+    box-sizing: border-box;
+    width: min(100%, 1100px);
+    min-height: 470px;
+    padding: clamp(32px, 6vw, 72px) clamp(24px, 7vw, 90px);
+    border: 1px solid #e1e2e4;
+    border-radius: 32px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #111;
+  }
+
+  /* Rótulo: Courier New acompanha os rótulos das outras seções. */
+  .section-06__eyebrow {
+    margin: 0;
+    color: #62646a;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  /* Aspas: verde claro já usado na identidade visual do Hero. */
+  .section-06__quote-mark {
+    height: 52px;
+    margin-top: 14px;
+    color: #e3ee88;
+    font-family: Georgia, serif;
+    font-size: 78px;
+    line-height: 1;
+  }
+
+  /* Comentário: largura de leitura controlada e tamanho responsivo. */
+  .section-06__quote {
+    max-width: 800px;
+    margin: 16px 0 28px;
+    font-size: clamp(22px, 2.3vw, 30px);
+    line-height: 1.35;
+    font-weight: 400;
+  }
+
+  /* Autor: círculo roxo sólido e textos alinhados à esquerda. */
+  .section-06__author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-align: left;
+  }
+
+  .section-06__avatar {
+    flex: none;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #6913bf;
+  }
+
+  .section-06__author-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 14px;
+  }
+
+  .section-06__author-copy span {
+    color: #666;
+  }
+
+  /* Indicadores apenas visuais; não há carrossel ou clique associado. */
+  .section-06__dots {
+    display: flex;
+    gap: 9px;
+    margin-top: 28px;
+  }
+
+  .section-06__dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #d7d7d7;
+  }
+
+  .section-06__dots .section-06__dot--active {
+    background: #6913bf;
+  }
+
+  /* Celular: preserva o mesmo HTML e reduz apenas o espaço interno. */
+  @media (max-width: 520px) {
+    .section-06__card {
+      min-height: 430px;
+      border-radius: 24px;
+    }
+  }
+</style>

@@ -1,0 +1,139 @@
+<!-- Seção 02: área branca reservada para o conteúdo seguinte. -->
+<section id="demonstracao" class="section-02">
+  <img class="section-02__preview" src="/section-02-preview.png" alt="Janela de prévia da demonstração" width="1614" height="974" />
+  <div class="section-02__story">
+    <img class="section-02__coffee" src="/section-02-coffee.png" alt="Xícara verde com café" width="1431" height="1099" loading="lazy" />
+    <div class="section-02__copy">
+      <p class="section-02__eyebrow">A rotina é real</p>
+      <h2>Só tem quadro e papel? Dá para começar por aí.</h2>
+      <p class="section-02__description">Escolha o tema, o tempo e os recursos. O plano parte do que sua turma tem à mão.</p>
+      <a class="section-02__action" href="#criar-plano">Experimentar com uma aula <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-02 {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100svh;
+    background: #fff;
+  }
+
+  .section-02__preview {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    display: block;
+    width: min(50vw, 800px);
+    max-width: calc(100% - 32px);
+    height: auto;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 24px 60px rgb(0 0 0 / 12%);
+    transform: translate(-50%, -50%);
+  }
+
+  @media (max-width: 600px) {
+    .section-02__preview {
+      width: 86vw;
+    }
+  }
+
+  .section-02__story {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(32px, 6vw, 96px);
+    box-sizing: border-box;
+    width: min(1120px, calc(100% - 64px));
+    min-height: 100svh;
+    margin-inline: auto;
+    padding-block: clamp(290px, 27vw, 380px) 88px;
+  }
+
+  .section-02__coffee {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    justify-self: center;
+  }
+
+  .section-02__copy {
+    min-width: 0;
+    color: #161018;
+  }
+
+  .section-02__eyebrow {
+    margin: 0 0 18px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: clamp(14px, 1.5vw, 18px);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .section-02__copy h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(38px, 4.2vw, 64px);
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+    overflow-wrap: break-word;
+  }
+
+  .section-02__description {
+    margin: 22px 0 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(18px, 1.8vw, 23px);
+    line-height: 1.4;
+  }
+
+  .section-02__action {
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: 100%;
+    min-height: 52px;
+    padding: 10px 22px;
+    border: 2px solid #8b36e3;
+    border-radius: 16px;
+    color: #6814bc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(16px, 1.6vw, 20px);
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .section-02__action:hover {
+    background: #f7efff;
+  }
+
+  .section-02__action:focus-visible {
+    outline: 3px solid #6814bc;
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 700px) {
+    .section-02__story {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+      width: min(520px, calc(100% - 40px));
+      padding-block: 180px 72px;
+    }
+
+    .section-02__coffee {
+      width: min(100%, 330px);
+    }
+
+    .section-02__action {
+      width: 100%;
+    }
+  }
+</style>
